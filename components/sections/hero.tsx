@@ -11,7 +11,7 @@ export default function Hero() {
     <section className="relative py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
       {/* Background map and decorative elements */}
       <div className="absolute inset-0 opacity-10">
-        <Image src="/abstract-map-background.png" alt="Map background" fill className="object-cover" />
+        <Image src="/abstract-map-background.png" alt="" fill className="object-cover" />
       </div>
 
       {/* Decorative circles */}
