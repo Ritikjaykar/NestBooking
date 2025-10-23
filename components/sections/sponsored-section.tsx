@@ -6,7 +6,7 @@ import { Heart, Bed, Bath, Maximize2 } from "lucide-react"
 const sponsoredProperties = [
   {
     id: 1,
-    image: "/palm-harbor-luxury-property.jpg",
+    image: "/22.png",
     title: "Palm Harbor",
     location: "2699 Green Valley, Highland Lake, FL",
     price: "$2,095",
@@ -18,7 +18,7 @@ const sponsoredProperties = [
   },
   {
     id: 2,
-    image: "/beverly-springfield-property.jpg",
+    image: "/23.png",
     title: "Beverly Springfield",
     location: "2821 Lake Sevilla, Palm Harbor, TX",
     price: "$2,700",
@@ -30,7 +30,7 @@ const sponsoredProperties = [
   },
   {
     id: 3,
-    image: "/faulkner-ave-property.jpg",
+    image: "/24.png",
     title: "Faulkner Ave",
     location: "909 Woodland St, Michigan, IN",
     price: "$4,550",
@@ -42,7 +42,7 @@ const sponsoredProperties = [
   },
   {
     id: 4,
-    image: "/st-crystal-property.jpg",
+    image: "/25.png",
     title: "St. Crystal",
     location: "210 US Highway, Highland Lake, FL",
     price: "$2,400",
@@ -54,7 +54,7 @@ const sponsoredProperties = [
   },
   {
     id: 5,
-    image: "/cove-red-property.jpg",
+    image: "/13.png",
     title: "Cove Red",
     location: "243 Curlew Road, Palm Harbor, TX",
     price: "$1,500",
@@ -66,7 +66,7 @@ const sponsoredProperties = [
   },
   {
     id: 6,
-    image: "/tarpon-bay-property.jpg",
+    image: "/12.png",
     title: "Tarpon Bay",
     location: "103 Lake Shores, Michigan, IN",
     price: "$1,600",

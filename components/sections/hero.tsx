@@ -87,14 +87,13 @@ export default function Hero() {
           {/* Right Image Section */}
           <div className="relative h-96 md:h-full min-h-96 rounded-2xl overflow-hidden">
             {/* Main Image */}
-            <div className="relative h-64 bg-muted rounded-2xl overflow-hidden mb-4">
-              <Image src="/luxury-property-apartment.jpg" alt="Property showcase" fill className="object-cover" />
+            <div className="relative h-50 bg-muted rounded-2xl overflow-hidden mb-4">
+              <Image src="/24.png" alt="Property showcase" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent" />
             </div>
 
             {/* Floating Cards */}
-            <div className="space-y-4">
-              {/* Card 1 - Beverly Springfield */}
+            <div className="space-y-4">         {/* Card 1 - Beverly Springfield */}
               <div className="bg-white rounded-lg shadow-lg p-4 max-w-xs">
                 <p className="text-sm text-secondary font-semibold mb-1">$2,700</p>
                 <p className="text-base font-bold text-primary mb-1">Beverly Springfield</p>
@@ -109,7 +108,7 @@ export default function Hero() {
               {/* Card 2 - Tarpon Bay */}
               <div className="bg-white rounded-lg shadow-lg p-4 max-w-xs ml-auto">
                 <div className="relative h-24 bg-muted rounded mb-3">
-                  <Image src="/tarpon-bay-property.jpg" alt="Tarpon Bay" fill className="object-cover rounded" />
+                  <Image src="/22.png" alt="Tarpon Bay" fill className="object-cover rounded" />
                 </div>
                 <p className="text-sm text-secondary font-semibold mb-1">$1,600</p>
                 <p className="text-base font-bold text-primary mb-1">Tarpon Bay</p>
