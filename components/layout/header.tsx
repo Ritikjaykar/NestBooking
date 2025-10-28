@@ -61,13 +61,13 @@ export default function Header() {
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center gap-4">
             <Link
-              href="#"
+              href="/login"
               className="text-sm text-foreground font-semibold hover:text-secondary transition"
             >
               Login
             </Link>
             <Link
-              href="#"
+              href="/signup"
               className="px-6 py-2 bg-secondary text-white rounded-lg text-sm font-semibold hover:bg-secondary/90 transition"
             >
               Sign Up

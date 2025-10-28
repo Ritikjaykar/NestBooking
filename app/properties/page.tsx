@@ -47,14 +47,18 @@ export default function PropertiesPage() {
                 Resources
               </a>
             </nav>
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm">
-                Login
-              </Button>
-              <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                Sign up
-              </Button>
-            </div>
+<div className="flex gap-2">
+  <Link href="/login" passHref>
+    <Button variant="outline" size="sm">
+      Login
+    </Button>
+  </Link>
+  <Link href="/signup" passHref>
+    <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90">
+      Sign up
+    </Button>
+  </Link>
+</div>
           </div>
         </div>
       </header>
