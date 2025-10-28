@@ -9,7 +9,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Nestbooking - Buy, Rent, or Sell Your Property",
   description: "A great platform to buy, sell, or rent your property without any commissions.",
-  generator: "v0.app",
+  generator: "Next.js",
 }
 
 export default function RootLayout({

@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import { Heart } from "lucide-react"
 
@@ -48,8 +49,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 5,
     image: "/5.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -59,8 +60,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 6,
     image: "/6.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -70,8 +71,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 7,
     image: "/7.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -81,8 +82,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 8,
     image: "/8.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -92,8 +93,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 9,
     image: "/9.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -102,8 +103,9 @@ const properties = [
     baths: 2,
     sqft: 2800,
     rating: 4.6,
-  },  {
-    id: 4,
+  },
+  {
+    id: 10,
     image: "/10.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -112,8 +114,9 @@ const properties = [
     baths: 2,
     sqft: 2800,
     rating: 4.6,
-  },  {
-    id: 4,
+  },
+  {
+    id: 11,
     image: "/11.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -122,8 +125,20 @@ const properties = [
     baths: 2,
     sqft: 2800,
     rating: 4.6,
-  },  {
-    id: 4,
+  },
+  {
+    id: 12,
+    image: "/12.png",
+    title: "Contemporary Home",
+    location: "Miami, Florida, US",
+    price: "$2,100,000",
+    beds: 3,
+    baths: 2,
+    sqft: 2800,
+    rating: 4.6,
+  },
+  {
+    id: 13,
     image: "/13.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -133,8 +148,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 14,
     image: "/14.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -144,8 +159,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 15,
     image: "/15.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -155,8 +170,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 16,
     image: "/16.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -166,8 +181,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 17,
     image: "/17.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -177,8 +192,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 18,
     image: "/18.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -188,8 +203,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 19,
     image: "/19.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -199,8 +214,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 20,
     image: "/20.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -210,8 +225,8 @@ const properties = [
     sqft: 2800,
     rating: 4.6,
   },
-    {
-    id: 4,
+  {
+    id: 21,
     image: "/21.png",
     title: "Contemporary Home",
     location: "Miami, Florida, US",
@@ -224,23 +239,33 @@ const properties = [
 ]
 
 export default function LocationSection() {
+  const [visibleCount, setVisibleCount] = useState(12) // show 3 rows initially (4 * 3 = 12)
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 12) // load 3 more rows on click
+  }
+
   return (
     <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-start mb-12">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">Based on your location</h2>
-            <p className="text-muted-foreground">Some of our picked properties near you location</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">
+              Based on your location
+            </h2>
+            <p className="text-muted-foreground">
+              Some of our picked properties near your location
+            </p>
           </div>
-          <button className="hidden md:block px-6 py-2 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/90 transition">
-            Browse more properties
-          </button>
         </div>
 
         {/* Properties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {properties.map((property) => (
-            <div key={property.id} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+          {properties.slice(0, visibleCount).map((property) => (
+            <div
+              key={property.id}
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+            >
               <div className="relative h-48 bg-muted overflow-hidden group">
                 <Image
                   src={property.image || "/placeholder.svg"}
@@ -268,9 +293,17 @@ export default function LocationSection() {
           ))}
         </div>
 
-        <button className="md:hidden w-full mt-8 px-6 py-3 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/90 transition">
-          Browse more properties
-        </button>
+        {/* Load More Button */}
+        {visibleCount < properties.length && (
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={handleLoadMore}
+              className="px-8 py-3 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/90 transition"
+            >
+              Load More
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )
