@@ -21,7 +21,7 @@ export default function PropertiesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-purple-50">
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
@@ -47,16 +47,18 @@ export default function PropertiesPage() {
                 Resources
               </a>
             </nav>
-<div className="flex gap-2">
-  <Link href="/login" passHref>
-    <Button variant="outline" size="sm">
-      Login
-    </Button>
+<div className="hidden md:flex items-center gap-4">
+  <Link
+    href="/login"
+    className="text-sm text-foreground font-semibold hover:text-secondary transition"
+  >
+    Login
   </Link>
-  <Link href="/signup" passHref>
-    <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90">
-      Sign up
-    </Button>
+  <Link
+    href="/signup"
+    className="px-6 py-2 bg-secondary text-white rounded-lg text-sm font-semibold hover:bg-secondary/90 transition"
+  >
+    Sign Up
   </Link>
 </div>
           </div>

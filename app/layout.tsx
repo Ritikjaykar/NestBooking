@@ -1,15 +1,15 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Plus_Jakarta_Sans } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
+import OfferPopup from "@/components/offer-popup"
 import "./globals.css"
 
-const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] })
+const _plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Nestbooking - Buy, Rent, or Sell Your Property",
-  description: "A great platform to buy, sell, or rent your property without any commissions.",
-  generator: "Next.js",
+  title: "Nestbooking",
+  description: "Find your perfect rental property",
+  generator: "v0.app",
 }
 
 export default function RootLayout({
@@ -19,9 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakartaSans.className} font-sans antialiased`}>
+      <body className={`font-sans antialiased`}>
+        <OfferPopup />
         {children}
-        <Analytics />
       </body>
     </html>
   )
