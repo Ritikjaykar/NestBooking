@@ -920,7 +920,9 @@ export default function ApplicationsPage() {
             <Link href="/dashboard" className="text-slate-600 hover:text-slate-900 transition">
               Dashboard
             </Link>
-            <span className="text-slate-900 font-semibold">Applications</span>
+            <Link href="#" className="text-slate-600 hover:text-slate-900 transition">
+              Applications
+            </Link>
           </nav>
 
           <div className="flex items-center gap-4">

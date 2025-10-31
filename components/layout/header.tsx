@@ -7,14 +7,17 @@ import { ChevronDown, Menu, X } from "lucide-react"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState(false)
+
+  const toggleDropdown = () => setOpenDropdown((prev) => !prev)
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-border">
+    <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-16 relative">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 flex items-center justify-center">
               <Image
                 src="/logo1.png"
                 alt="Logo"
@@ -23,60 +26,106 @@ export default function Header() {
                 className="object-contain"
               />
             </div>
-            <span className="font-bold text-lg text-primary hidden sm:inline">
+            <span className="font-bold text-lg text-gray-900 hidden sm:inline">
               Nestbooking
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 lg:gap-12">
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
             <Link
               href="/properties"
               className="text-gray-900 font-semibold hover:text-purple-600 transition"
             >
-              Rent
+              Home Loan
             </Link>
             <Link
               href="#"
               className="text-gray-900 font-semibold hover:text-purple-600 transition"
             >
-              Buy
+              Dashboard
             </Link>
             <Link
               href="#"
               className="text-gray-900 font-semibold hover:text-purple-600 transition"
             >
-              Sell
+              Hire Broker
             </Link>
-            <div className="flex items-center gap-1 font-semibold text-gray-900 hover:text-purple-600 transition cursor-pointer">
-              <span>Manage Property</span>
-              <ChevronDown size={16} />
-            </div>
-            <div className="flex items-center gap-1 font-semibold text-gray-900 hover:text-purple-600 transition cursor-pointer">
-              <span>Resources</span>
-              <ChevronDown size={16} />
+            <Link
+              href="#"
+              className="text-gray-900 font-semibold hover:text-purple-600 transition"
+            >
+              Wall
+            </Link>
+            <Link
+              href="#"
+              className="text-gray-900 font-semibold hover:text-purple-600 transition"
+            >
+              Claim Your Property
+            </Link>
+            <Link
+              href="#"
+              className="text-gray-900 font-semibold hover:text-purple-600 transition"
+            >
+              List Your Property
+            </Link>
+
+            {/* Join As Dropdown */}
+            <div className="relative">
+              <button
+                onClick={toggleDropdown}
+                className={`flex items-center gap-1 font-semibold transition cursor-pointer ${
+                  openDropdown ? "text-purple-600" : "text-gray-900 hover:text-purple-600"
+                }`}
+              >
+                <span>Join As</span>
+                <ChevronDown
+                  size={16}
+                  className={`transform transition-transform ${
+                    openDropdown ? "rotate-180" : "rotate-0"
+                  }`}
+                />
+              </button>
+
+              {openDropdown && (
+                <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-fadeIn">
+                  <ul className="py-2 text-sm text-gray-700">
+                    <li>
+                      <Link
+                        href="/login"
+                        className="block px-4 py-2 hover:bg-purple-50 hover:text-purple-600 transition"
+                        onClick={() => setOpenDropdown(false)}
+                      >
+                        Property Owner / Buyer Login
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/login"
+                        className="block px-4 py-2 hover:bg-purple-50 hover:text-purple-600 transition"
+                        onClick={() => setOpenDropdown(false)}
+                      >
+                        Builder for CRM Platform Login
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/login"
+                        className="block px-4 py-2 hover:bg-purple-50 hover:text-purple-600 transition"
+                        onClick={() => setOpenDropdown(false)}
+                      >
+                        Channel Partner / Broker Login
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </nav>
 
-          {/* Auth Buttons */}
-          <div className="hidden md:flex items-center gap-4">
-            <Link
-              href="/login"
-              className="text-sm text-foreground font-semibold hover:text-secondary transition"
-            >
-              Login
-            </Link>
-            <Link
-              href="/signup"
-              className="px-6 py-2 bg-secondary text-white rounded-lg text-sm font-semibold hover:bg-secondary/90 transition"
-            >
-              Sign Up
-            </Link>
-          </div>
-
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden"
+            className="md:hidden text-gray-700"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -87,56 +136,87 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isOpen && (
           <nav className="md:hidden pb-4 space-y-2">
-            <Link
-              href="/properties"
-              className="block px-4 py-2 text-sm text-foreground hover:bg-muted rounded"
-              onClick={() => setIsOpen(false)}
-            >
-              Rent
-            </Link>
-            <Link
-              href="#"
-              className="block px-4 py-2 text-sm text-foreground hover:bg-muted rounded"
-            >
-              Buy
-            </Link>
-            <Link
-              href="#"
-              className="block px-4 py-2 text-sm text-foreground hover:bg-muted rounded"
-            >
-              Sell
-            </Link>
-            <Link
-              href="#"
-              className="block px-4 py-2 text-sm text-foreground hover:bg-muted rounded"
-            >
-              Manage Property
-            </Link>
-            <Link
-              href="#"
-              className="block px-4 py-2 text-sm text-foreground hover:bg-muted rounded"
-            >
-              Resources
-            </Link>
-            <div className="flex gap-2 pt-2">
+            {[
+              "Home Loan",
+              "Dashboard",
+              "Hire Broker",
+              "Wall",
+              "Claim Your Property",
+              "List Your Property",
+            ].map((item, i) => (
               <Link
+                key={i}
                 href="#"
-                className="flex-1 px-4 py-2 text-sm text-foreground hover:bg-muted rounded text-center"
+                className="block px-4 py-2 text-sm text-gray-800 hover:bg-purple-50 hover:text-purple-600 rounded transition"
+                onClick={() => setIsOpen(false)}
               >
-                Login
+                {item}
               </Link>
-              <Link
-                href="#"
-                className="flex-1 px-4 py-2 bg-secondary text-white rounded text-sm font-medium text-center"
+            ))}
+
+            {/* Mobile Dropdown */}
+            <div className="border-t pt-2">
+              <button
+                onClick={toggleDropdown}
+                className={`flex items-center gap-1 px-4 py-2 font-semibold w-full text-left transition ${
+                  openDropdown ? "text-purple-600" : "text-gray-900 hover:text-purple-600"
+                }`}
               >
-                Sign Up
-              </Link>
+                Join As
+                <ChevronDown
+                  size={16}
+                  className={`ml-1 transform transition-transform ${
+                    openDropdown ? "rotate-180" : "rotate-0"
+                  }`}
+                />
+              </button>
+
+              {openDropdown && (
+                <div className="mt-1 bg-white border border-gray-200 rounded-lg shadow-lg">
+                  <ul className="py-2 text-sm text-gray-700">
+                    <li>
+                      <Link
+                        href="/login"
+                        className="block px-4 py-2 hover:bg-purple-50 hover:text-purple-600 transition"
+                        onClick={() => {
+                          setOpenDropdown(false)
+                          setIsOpen(false)
+                        }}
+                      >
+                        Property Owner / Buyer Login
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/login"
+                        className="block px-4 py-2 hover:bg-purple-50 hover:text-purple-600 transition"
+                        onClick={() => {
+                          setOpenDropdown(false)
+                          setIsOpen(false)
+                        }}
+                      >
+                        Builder for CRM Platform Login
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/login"
+                        className="block px-4 py-2 hover:bg-purple-50 hover:text-purple-600 transition"
+                        onClick={() => {
+                          setOpenDropdown(false)
+                          setIsOpen(false)
+                        }}
+                      >
+                        Channel Partner / Broker Login
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </nav>
         )}
       </div>
-
-      
     </header>
   )
 }

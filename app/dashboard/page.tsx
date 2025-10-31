@@ -1,141 +1,183 @@
 "use client"
 
 import Link from "next/link"
-import { Bell, LogOut, User } from "lucide-react"
-import { useState } from "react"
+
 
 export default function DashboardPage() {
-  const [isProfileOpen, setIsProfileOpen] = useState(false)
-
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-purple-700 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">N</span>
-            </div>
-            <span className="font-bold text-slate-900">Nestbooking</span>
-          </div>
+    <div className="min-h-screen" style={{ backgroundColor: "#FFFFFF" }}>
+      <div style={{ backgroundColor: "#FFFFFF" }} className="border-b border-[#E5E6EB] px-6 py-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
 
-          <nav className="hidden md:flex items-center gap-8">
-            <span className="text-slate-900 font-semibold">Dashboard</span>
-            <Link href="/dashboard/applications" className="text-slate-600 hover:text-slate-900 transition">
-              Applications
+        </div>
+      </div>
+
+      <div style={{ backgroundColor: "#FFFFFF" }} className="border-b border-[#E5E6EB] px-6 py-4">
+        <div className="max-w-5xl mx-auto flex flex-wrap gap-3">
+          <button className="px-4 py-2 border-2 border-white text-[#000929] rounded-lg hover:bg-[#F9FAFB] transition font-bold text-lg bg-white">
+            Manage Properties
+          </button>
+          <button className="px-4 py-2 border-2 border-white text-[#000929] rounded-lg hover:bg-[#F9FAFB] transition font-bold text-lg bg-white">
+            Claim your Properties
+          </button>
+          <button className="px-4 py-2 border-2 border-white text-[#000929] rounded-lg hover:bg-[#F9FAFB] transition font-bold text-lg bg-white">
+            Search
+          </button>
+          <button className="px-4 py-2 border-2 border-white text-[#000929] rounded-lg hover:bg-[#F9FAFB] transition font-bold text-lg bg-white ml-auto">
+            Back to Home
+          </button>
+        </div>
+      </div>
+
+      <main className="px-6 py-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Stats Grid */}
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            <Link
+            href="/total_Prop"
+            className="border rounded-2xl p-6 hover:shadow-md transition transform hover:-translate-y-1"
+              style={{ backgroundColor: "#F9FAFB", borderColor: "#E5E6EB" }}
+            >
+            <div style={{ backgroundColor: "#F9FAFB", borderColor: "#E5E6EB" }} className="border rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  style={{ backgroundColor: "#F0EFFB" }}
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-[#6366F1] text-lg font-bold"
+                >
+                  📦
+                </div>
+                <span className="text-[#6C727F] text-sm font-medium">
+                  Total
+                  <br />
+                  Properties
+                </span>
+              </div>
+              <p className="text-2xl font-bold text-[#000929]">0</p>
+            </div>
             </Link>
-          </nav>
 
-          <div className="flex items-center gap-4">
-            <button className="p-2 text-slate-600 hover:text-slate-900 transition">
-              <Bell size={20} />
-            </button>
-
-            <div className="relative">
-              <button
-                onClick={() => setIsProfileOpen(!isProfileOpen)}
-                className="flex items-center gap-2 px-3 py-2 bg-purple-100 rounded-lg hover:bg-purple-200 transition"
-              >
-                <div className="w-7 h-7 bg-gradient-to-r from-purple-600 to-purple-700 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                  GI
+            <div style={{ backgroundColor: "#F9FAFB", borderColor: "#E5E6EB" }} className="border rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  style={{ backgroundColor: "#F0EFFB" }}
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-[#6366F1] text-lg font-bold"
+                >
+                  ⭐
                 </div>
-                <span className="text-sm font-semibold text-slate-900">Giovanni</span>
-              </button>
+                <span className="text-[#6C727F] text-sm font-medium">
+                  Rented
+                  <br />
+                  Properties
+                </span>
+              </div>
+              <p className="text-2xl font-bold text-[#000929]">0</p>
+            </div>
 
-              {isProfileOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-slate-200 py-2 z-50">
-                  <Link
-                    href="#"
-                    className="block px-4 py-2 text-slate-900 hover:bg-slate-50 flex items-center gap-2 transition"
-                  >
-                    <User size={16} /> My Profile
-                  </Link>
-                  <Link
-                    href="#"
-                    className="block px-4 py-2 text-slate-900 hover:bg-slate-50 flex items-center gap-2 transition"
-                  >
-                    <User size={16} /> My Info
-                  </Link>
-                  <hr className="my-2" />
-                  <button className="w-full text-left px-4 py-2 text-slate-900 hover:bg-slate-50 flex items-center gap-2 transition">
-                    <LogOut size={16} /> Logout
-                  </button>
+            <div style={{ backgroundColor: "#F9FAFB", borderColor: "#E5E6EB" }} className="border rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  style={{ backgroundColor: "#F0EFFB" }}
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-[#6366F1] text-lg font-bold"
+                >
+                  💎
                 </div>
-              )}
+                <span className="text-[#6C727F] text-sm font-medium">For Sale</span>
+              </div>
+              <p className="text-2xl font-bold text-[#000929]">0</p>
+            </div>
+
+            <div style={{ backgroundColor: "#F9FAFB", borderColor: "#E5E6EB" }} className="border rounded-2xl p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  style={{ backgroundColor: "#F0EFFB" }}
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-[#6366F1] text-lg font-bold"
+                >
+                  💰
+                </div>
+                <span className="text-[#6C727F] text-sm font-medium">Revenue</span>
+              </div>
+              <p className="text-2xl font-bold text-[#000929]">0 Rs</p>
             </div>
           </div>
-        </div>
-      </header>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-slate-900 mb-2">Welcome back, Giovanni</h1>
-          <p className="text-slate-600">Complete your rental application to get started</p>
-        </div>
-
-        {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Link
-            href="/dashboard/applications"
-            className="bg-white border border-slate-200 rounded-lg p-6 hover:shadow-lg transition cursor-pointer group"
-          >
-            <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-200 transition">
-              <span className="text-2xl">📋</span>
-            </div>
-            <h3 className="font-semibold text-slate-900 mb-2">Start Application</h3>
-            <p className="text-sm text-slate-600">Complete your 4-step tenancy application</p>
-          </Link>
-
-          <div className="bg-white border border-slate-200 rounded-lg p-6">
-            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <span className="text-2xl">📄</span>
-            </div>
-            <h3 className="font-semibold text-slate-900 mb-2">Application Progress</h3>
-            <p className="text-2xl font-bold text-slate-900">0%</p>
-            <p className="text-xs text-slate-500 mt-1">Not started</p>
-          </div>
-
-          <div className="bg-white border border-slate-200 rounded-lg p-6">
-            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-              <span className="text-2xl">✓</span>
-            </div>
-            <h3 className="font-semibold text-slate-900 mb-2">Status</h3>
-            <p className="text-sm text-green-600 font-medium">Ready to apply</p>
-          </div>
-        </div>
-
-        {/* Application Steps Info */}
-        <div className="mt-12 bg-white border border-slate-200 rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Your Application Journey</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold mx-auto mb-3">
-                1
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div style={{ backgroundColor: "#F9FAFB", borderColor: "#E5E6EB" }} className="border rounded-2xl p-6">
+              <h2 className="text-[#000929] text-lg font-bold mb-8">Property Status</h2>
+              <div className="grid grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div
+                    style={{ borderColor: "#E5E6EB" }}
+                    className="w-32 h-32 mx-auto mb-4 rounded-full border-4 flex items-center justify-center"
+                  >
+                    <span className="text-3xl font-bold text-[#6366F1]">0</span>
+                  </div>
+                  <p className="text-[#000929] font-medium">Booked</p>
+                </div>
+                <div className="text-center">
+                  <div
+                    style={{ borderColor: "#E5E6EB" }}
+                    className="w-32 h-32 mx-auto mb-4 rounded-full border-4 flex items-center justify-center"
+                  >
+                    <span className="text-3xl font-bold text-[#6366F1]">0</span>
+                  </div>
+                  <p className="text-[#000929] font-medium">Registered</p>
+                </div>
+                <div className="text-center">
+                  <div
+                    style={{ borderColor: "#E5E6EB" }}
+                    className="w-32 h-32 mx-auto mb-4 rounded-full border-4 flex items-center justify-center"
+                  >
+                    <span className="text-3xl font-bold text-[#6366F1]">0</span>
+                  </div>
+                  <p className="text-[#000929] font-medium">Delivered</p>
+                </div>
               </div>
-              <h3 className="font-semibold text-slate-900 mb-2">Personal</h3>
-              <p className="text-sm text-slate-600">Your details and contact info</p>
             </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-slate-300 text-slate-600 rounded-full flex items-center justify-center font-bold mx-auto mb-3">
-                2
+
+            <div style={{ backgroundColor: "#F9FAFB", borderColor: "#E5E6EB" }} className="border rounded-2xl p-6">
+              <h2 className="text-[#000929] text-lg font-bold mb-6">Total Investment</h2>
+              <div className="space-y-4">
+                <div style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E6EB" }} className="border rounded-xl p-4">
+                  <p className="text-[#9EA3AE] text-sm">Investment 1</p>
+                </div>
+                <div style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E6EB" }} className="border rounded-xl p-4">
+                  <p className="text-[#9EA3AE] text-sm">Investment 2</p>
+                </div>
+                <div style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E6EB" }} className="border rounded-xl p-4">
+                  <p className="text-[#9EA3AE] text-sm">Investment 3</p>
+                </div>
               </div>
-              <h3 className="font-semibold text-slate-900 mb-2">Employment</h3>
-              <p className="text-sm text-slate-600">Employment status</p>
             </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-slate-300 text-slate-600 rounded-full flex items-center justify-center font-bold mx-auto mb-3">
-                3
+
+            <div style={{ backgroundColor: "#F9FAFB", borderColor: "#E5E6EB" }} className="border rounded-2xl p-6">
+              <h2 className="text-[#000929] text-lg font-bold mb-6">Payment History</h2>
+              <div className="space-y-4">
+                <div style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E6EB" }} className="border rounded-xl p-4">
+                  <p className="text-[#9EA3AE] text-sm">Payment Record 1</p>
+                </div>
+                <div style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E6EB" }} className="border rounded-xl p-4">
+                  <p className="text-[#9EA3AE] text-sm">Payment Record 2</p>
+                </div>
+                <div style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E6EB" }} className="border rounded-xl p-4">
+                  <p className="text-[#9EA3AE] text-sm">Payment Record 3</p>
+                </div>
               </div>
-              <h3 className="font-semibold text-slate-900 mb-2">Living Arrangements</h3>
-              <p className="text-sm text-slate-600">Rental history</p>
             </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-slate-300 text-slate-600 rounded-full flex items-center justify-center font-bold mx-auto mb-3">
-                4
+
+            <div style={{ backgroundColor: "#F9FAFB", borderColor: "#E5E6EB" }} className="border rounded-2xl p-6">
+              <h2 className="text-[#000929] text-lg font-bold mb-6">Builder's Update</h2>
+              <div className="space-y-4">
+                <div style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E6EB" }} className="border rounded-xl p-4">
+                  <p className="text-[#9EA3AE] text-sm">Update 1</p>
+                </div>
+                <div style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E6EB" }} className="border rounded-xl p-4">
+                  <p className="text-[#9EA3AE] text-sm">Update 2</p>
+                </div>
+                <div style={{ backgroundColor: "#FFFFFF", borderColor: "#E5E6EB" }} className="border rounded-xl p-4">
+                  <p className="text-[#9EA3AE] text-sm">Update 3</p>
+                </div>
               </div>
-              <h3 className="font-semibold text-slate-900 mb-2">Documents</h3>
-              <p className="text-sm text-slate-600">Upload required files</p>
             </div>
           </div>
         </div>
