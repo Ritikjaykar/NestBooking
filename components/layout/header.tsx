@@ -16,7 +16,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center">
               <Image
-                src="/image1.png"
+                src="/logo1.png"
                 alt="Logo"
                 width={40}
                 height={40}
@@ -135,6 +135,8 @@ export default function Header() {
           </nav>
         )}
       </div>
+
+      
     </header>
   )
 }

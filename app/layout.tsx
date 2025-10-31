@@ -9,7 +9,7 @@ const _plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Nestbooking",
   description: "Find your perfect rental property",
-  generator: "v0.app",
+  generator: "Next.js",
 }
 
 export default function RootLayout({

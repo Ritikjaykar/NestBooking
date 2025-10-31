@@ -29,7 +29,7 @@ export default function LoginPage() {
     // Simulate API call
     setTimeout(() => {
       console.log("Login attempt:", { email, rememberMe })
-      router.push("/properties")
+      router.push("/dashboard")
       setLoading(false)
     }, 1000)
   }

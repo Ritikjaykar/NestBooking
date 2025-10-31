@@ -1,10 +1,12 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react"
 
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-border">
       {/* Main Footer Content */}
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand */}
@@ -21,26 +23,10 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-primary text-sm mb-4">SELL A HOME</h4>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Request an offer
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Reviews
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Stories
-                </Link>
-              </li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Request an offer</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Pricing</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Reviews</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Stories</Link></li>
             </ul>
           </div>
 
@@ -48,16 +34,8 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-primary text-sm mb-4">BUY A HOME</h4>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Buy
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Finance
-                </Link>
-              </li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Buy</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Finance</Link></li>
             </ul>
           </div>
 
@@ -65,21 +43,9 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-primary text-sm mb-4">BUY, RENT AND SELL</h4>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Buy and sell properties
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Rent home
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Builder trade-up
-                </Link>
-              </li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Buy and sell properties</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Rent home</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Builder trade-up</Link></li>
             </ul>
           </div>
 
@@ -87,26 +53,10 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-primary text-sm mb-4">ABOUT</h4>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Company
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  How it works
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Investors
-                </Link>
-              </li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Company</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">How it works</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Contact</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Investors</Link></li>
             </ul>
           </div>
         </div>
@@ -120,21 +70,9 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-primary text-sm mb-4">TERMS & PRIVACY</h4>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Trust & Safety
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Privacy Policy
-                </Link>
-              </li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Trust & Safety</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Terms of Service</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Privacy Policy</Link></li>
             </ul>
           </div>
 
@@ -145,27 +83,25 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-primary text-sm mb-4">RESOURCES</h4>
             <ul className="space-y-3 text-sm">
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Guides
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                  Help Center
-                </Link>
-              </li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Blog</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Guides</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">FAQ</Link></li>
+              <li><Link href="#" className="text-muted-foreground hover:text-primary transition">Help Center</Link></li>
             </ul>
+          </div>
+        </div>
+
+        {/* Sponsored by Bank Section */}
+        <div className="border-t border-border pt-8 mb-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <p className="text-sm text-muted-foreground">Sponsored by</p>
+            <Image
+              src="/bank-logo.png" // replace with your actual bank logo path
+              alt="Sponsored Bank Logo"
+              width={120}
+              height={40}
+              className="object-contain"
+            />
           </div>
         </div>
       </div>
@@ -176,18 +112,10 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">© 2021 Nestbooking. All rights reserved</p>
             <div className="flex gap-4">
-              <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                <Facebook size={20} />
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                <Instagram size={20} />
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                <Twitter size={20} />
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition">
-                <Linkedin size={20} />
-              </Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary transition"><Facebook size={20} /></Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary transition"><Instagram size={20} /></Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary transition"><Twitter size={20} /></Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary transition"><Linkedin size={20} /></Link>
             </div>
           </div>
         </div>
