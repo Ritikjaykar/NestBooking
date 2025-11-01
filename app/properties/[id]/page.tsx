@@ -123,7 +123,7 @@ export default function PropertyDetailPage() {
         <div className="mb-8 grid gap-4 lg:grid-cols-3">
           <div className="relative lg:col-span-2">
             <img
-              src={images[currentImageIdx] || "/placeholder.svg"}
+              src="/1.png"
               alt="Property"
               className="h-96 w-full rounded-lg object-cover"
             />
@@ -140,22 +140,24 @@ export default function PropertyDetailPage() {
               <ChevronRight size={24} />
             </button>
           </div>
-          <div className="flex flex-col gap-2">
-            {images.map((img, idx) => (
-              <img
-                key={idx}
-                src={img || "/placeholder.svg"}
-                alt={`Property ${idx + 1}`}
-                className={`h-24 w-full cursor-pointer rounded-lg object-cover transition-opacity ${
-                  idx === currentImageIdx ? "opacity-100 ring-2 ring-accent" : "opacity-60 hover:opacity-80"
-                }`}
-                onClick={() => setCurrentImageIdx(idx)}
-              />
-            ))}
-            <button className="flex h-24 items-center justify-center rounded-lg border-2 border-dashed border-border bg-muted text-sm font-medium text-muted-foreground hover:bg-muted/80">
-              + View all photos
-            </button>
-          </div>
+<div className="flex flex-col gap-2">
+  {["/1.png", "/2.png", "/3.png", "/4.png"].map((img, idx) => (
+    <img
+      key={idx}
+      src={img}
+      alt={`Property ${idx + 1}`}
+      className={`h-24 w-full cursor-pointer rounded-lg object-cover transition-opacity ${
+        idx === currentImageIdx ? "opacity-100 ring-2 ring-accent" : "opacity-60 hover:opacity-80"
+      }`}
+      onClick={() => setCurrentImageIdx(idx)}
+    />
+  ))}
+
+  <button className="flex h-24 items-center justify-center rounded-lg border-2 border-dashed border-border bg-muted text-sm font-medium text-muted-foreground hover:bg-muted/80">
+    + View all photos
+  </button>
+</div>
+
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">

@@ -1,5 +1,7 @@
 "use client"
 
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
 import Image from "next/image"
 import { Heart, Bed, Bath, Maximize2 } from "lucide-react"
 
@@ -79,23 +81,79 @@ const sponsoredProperties = [
 ]
 
 export default function SponsoredSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: "-50px" })
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const slideUp = {
+    hidden: { y: 40, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  }
+
   return (
-    <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-purple-50">
+    <motion.section 
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
+      className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-purple-50"
+    >
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+        <motion.div 
+          variants={slideUp}
+          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12"
+        >
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2">Sponsored Properties</h2>
             <p className="text-muted-foreground">Some of our picked properties near you location.</p>
           </div>
-          <button className="px-6 py-2 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/90 transition whitespace-nowrap">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 py-2 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/90 transition whitespace-nowrap"
+          >
             Browse more properties
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
 
         {/* Properties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sponsoredProperties.map((property) => (
-            <div key={property.id} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
+          {sponsoredProperties.map((property, index) => (
+            <motion.div
+              key={property.id}
+              variants={cardVariants}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition"
+            >
               {/* Image Container */}
               <div className="relative h-48 bg-muted overflow-hidden group">
                 <Image
@@ -106,14 +164,23 @@ export default function SponsoredSection() {
                 />
                 {/* Popular Badge */}
                 {property.popular && (
-                  <div className="absolute top-3 left-3 px-3 py-1 bg-secondary text-white text-xs font-bold rounded flex items-center gap-1">
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                    className="absolute top-3 left-3 px-3 py-1 bg-secondary text-white text-xs font-bold rounded flex items-center gap-1"
+                  >
                     <span>✦</span> POPULAR
-                  </div>
+                  </motion.div>
                 )}
                 {/* Heart Button */}
-                <button className="absolute top-3 right-3 p-2 bg-white rounded-full shadow hover:bg-gray-50 transition">
+                <motion.button 
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="absolute top-3 right-3 p-2 bg-white rounded-full shadow hover:bg-gray-50 transition"
+                >
                   <Heart size={18} className="text-muted-foreground" />
-                </button>
+                </motion.button>
               </div>
 
               {/* Content */}
@@ -141,10 +208,10 @@ export default function SponsoredSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

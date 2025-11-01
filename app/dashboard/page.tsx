@@ -1,13 +1,95 @@
 "use client"
 
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Home, TrendingUp, DollarSign, Package, Star, Building2, History, Bell } from "lucide-react"
 
 export default function DashboardPage() {
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false)
+  const [isTitleVisible, setIsTitleVisible] = useState(false)
+  const [isStatsVisible, setIsStatsVisible] = useState(false)
+  const [isContentVisible, setIsContentVisible] = useState(false)
+
+  const headerRef = useRef(null)
+  const titleRef = useRef(null)
+  const statsRef = useRef(null)
+  const contentRef = useRef(null)
+
+  useEffect(() => {
+    // Header appears immediately
+    setIsHeaderVisible(true)
+
+    const observers = []
+
+    // Title observer
+    const titleObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsTitleVisible(true)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    // Stats observer
+    const statsObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsStatsVisible(true)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    // Content observer
+    const contentObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsContentVisible(true)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    if (titleRef.current) {
+      titleObserver.observe(titleRef.current)
+      observers.push({ ref: titleRef, observer: titleObserver })
+    }
+    if (statsRef.current) {
+      statsObserver.observe(statsRef.current)
+      observers.push({ ref: statsRef, observer: statsObserver })
+    }
+    if (contentRef.current) {
+      contentObserver.observe(contentRef.current)
+      observers.push({ ref: contentRef, observer: contentObserver })
+    }
+
+    return () => {
+      observers.forEach(({ ref, observer }) => {
+        if (ref.current) {
+          observer.unobserve(ref.current)
+        }
+      })
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Top Navigation Section */}
-      <div className="border-b border-gray-200 px-6 py-4 bg-white shadow-sm">
+      <div 
+        ref={headerRef}
+        className="border-b border-gray-200 px-6 py-4 bg-white shadow-sm transition-all duration-1000"
+        style={{
+          opacity: isHeaderVisible ? 1 : 0,
+          transform: isHeaderVisible ? 'translateY(0)' : 'translateY(-20px)'
+        }}
+      >
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Left - Logo */}
           <div className="flex items-center gap-2 md:w-[200px]">
@@ -22,12 +104,16 @@ export default function DashboardPage() {
 
           {/* Center - Buttons */}
           <div className="flex flex-wrap justify-center gap-8 w-full md:w-auto">
-            <button className="text-gray-700 hover:text-accent transition font-semibold text-base">
-              Manage Properties
-            </button>
-            <button className="text-gray-700 hover:text-accent transition font-semibold text-base">
-              Claim your Properties
-            </button>
+         <Link href="/properties">
+              <button className="text-gray-700 hover:text-gray-900 transition font-semibold text-base whitespace-nowrap">
+                Manage Properties
+              </button>
+              </Link>
+              <Link href="/total_Prop" passHref>
+                <button className="text-gray-700 hover:text-gray-900 transition font-semibold text-base whitespace-nowrap">
+                  Claim your Properties
+                </button>
+              </Link>
             <button className="text-gray-700 hover:text-accent transition font-semibold text-base">
               Search
             </button>
@@ -47,16 +133,31 @@ export default function DashboardPage() {
       <main className="px-6 py-8">
         <div className="max-w-7xl mx-auto">
           {/* Dashboard Title */}
-          <div className="mb-8">
+          <div 
+            ref={titleRef}
+            className="mb-8 transition-all duration-1000"
+            style={{
+              opacity: isTitleVisible ? 1 : 0,
+              transform: isTitleVisible ? 'translateY(0)' : 'translateY(30px)'
+            }}
+          >
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard Overview</h1>
             <p className="text-gray-600">Welcome back! Here's what's happening with your properties.</p>
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div 
+            ref={statsRef}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+          >
             <Link
               href="/total_Prop"
-              className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+              className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-500 transform hover:-translate-y-1 cursor-pointer"
+              style={{
+                opacity: isStatsVisible ? 1 : 0,
+                transform: isStatsVisible ? 'translateY(0)' : 'translateY(40px)',
+                transitionDelay: '100ms'
+              }}
             >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -73,7 +174,14 @@ export default function DashboardPage() {
               <p className="text-3xl font-bold text-gray-900">0</p>
             </Link>
 
-            <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+            <div 
+              className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-500"
+              style={{
+                opacity: isStatsVisible ? 1 : 0,
+                transform: isStatsVisible ? 'translateY(0)' : 'translateY(40px)',
+                transitionDelay: '200ms'
+              }}
+            >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div
@@ -89,7 +197,14 @@ export default function DashboardPage() {
               <p className="text-3xl font-bold text-gray-900">0</p>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+            <div 
+              className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-500"
+              style={{
+                opacity: isStatsVisible ? 1 : 0,
+                transform: isStatsVisible ? 'translateY(0)' : 'translateY(40px)',
+                transitionDelay: '300ms'
+              }}
+            >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div
@@ -105,7 +220,14 @@ export default function DashboardPage() {
               <p className="text-3xl font-bold text-gray-900">0</p>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-300">
+            <div 
+              className="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-all duration-500"
+              style={{
+                opacity: isStatsVisible ? 1 : 0,
+                transform: isStatsVisible ? 'translateY(0)' : 'translateY(40px)',
+                transitionDelay: '400ms'
+              }}
+            >
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div
@@ -123,9 +245,16 @@ export default function DashboardPage() {
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div ref={contentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Property Status */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+            <div 
+              className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm transition-all duration-1000"
+              style={{
+                opacity: isContentVisible ? 1 : 0,
+                transform: isContentVisible ? 'translateY(0)' : 'translateY(40px)',
+                transitionDelay: '100ms'
+              }}
+            >
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-gray-900 text-xl font-bold">Property Status</h2>
                 <button className="text-sm text-indigo-600 hover:text-indigo-700 font-semibold">View All</button>
@@ -222,7 +351,14 @@ export default function DashboardPage() {
             </div>
 
             {/* Total Investment */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+            <div 
+              className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm transition-all duration-1000"
+              style={{
+                opacity: isContentVisible ? 1 : 0,
+                transform: isContentVisible ? 'translateY(0)' : 'translateY(40px)',
+                transitionDelay: '200ms'
+              }}
+            >
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-gray-900 text-xl font-bold flex items-center gap-2">
                   <TrendingUp size={20} className="text-indigo-600" />
@@ -253,7 +389,14 @@ export default function DashboardPage() {
             </div>
 
             {/* Payment History */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+            <div 
+              className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm transition-all duration-1000"
+              style={{
+                opacity: isContentVisible ? 1 : 0,
+                transform: isContentVisible ? 'translateY(0)' : 'translateY(40px)',
+                transitionDelay: '300ms'
+              }}
+            >
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-gray-900 text-xl font-bold flex items-center gap-2">
                   <History size={20} className="text-indigo-600" />
@@ -284,7 +427,14 @@ export default function DashboardPage() {
             </div>
 
             {/* Builder's Update */}
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
+            <div 
+              className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm transition-all duration-1000"
+              style={{
+                opacity: isContentVisible ? 1 : 0,
+                transform: isContentVisible ? 'translateY(0)' : 'translateY(40px)',
+                transitionDelay: '400ms'
+              }}
+            >
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-gray-900 text-xl font-bold flex items-center gap-2">
                   <Bell size={20} className="text-indigo-600" />

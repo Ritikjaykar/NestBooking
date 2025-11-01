@@ -158,10 +158,12 @@ export default function DashboardPage() {
 
             {/* Center - Buttons */}
             <div className="flex flex-wrap justify-center gap-8 w-full md:w-auto">
+              <Link href="/properties">
               <button className="text-gray-700 hover:text-gray-900 transition font-semibold text-base whitespace-nowrap">
                 Manage Properties
               </button>
-              <Link href="/tenApplication" passHref>
+              </Link>
+              <Link href="/total_Prop" passHref>
                 <button className="text-gray-700 hover:text-gray-900 transition font-semibold text-base whitespace-nowrap">
                   Claim your Properties
                 </button>
