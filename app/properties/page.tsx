@@ -25,42 +25,42 @@ export default function PropertiesPage() {
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2 md:w-[200px] flex-shrink-0">
               <div className="h-8 w-8 rounded-lg bg-accent"></div>
               <span className="text-lg font-bold text-foreground">Nestbooking</span>
             </div>
-            <nav className="hidden gap-8 md:flex">
-              <a href="#" className="text-sm font-medium text-foreground hover:text-accent">
-                Rent
+            <nav className="flex flex-wrap justify-center gap-8 w-full md:w-auto">
+              <a href="#" className="text-base font-medium text-foreground hover:text-accent whitespace-nowrap">
+                Rent     
               </a>
-              <a href="#" className="text-sm font-medium text-foreground hover:text-accent">
+              <a href="#" className="text-base font-medium text-foreground hover:text-accent whitespace-nowrap">
                 Buy
               </a>
-              <a href="#" className="text-sm font-medium text-foreground hover:text-accent">
+              <a href="#" className="text-base font-medium text-foreground hover:text-accent whitespace-nowrap">
                 Sell
               </a>
-              <a href="#" className="text-sm font-medium text-foreground hover:text-accent">
+              <a href="#" className="text-base font-medium text-foreground hover:text-accent whitespace-nowrap">
                 Manage Property
               </a>
-              <a href="#" className="text-sm font-medium text-foreground hover:text-accent">
+              <a href="#" className="text-base font-medium text-foreground hover:text-accent whitespace-nowrap">
                 Resources
               </a>
             </nav>
-<div className="hidden md:flex items-center gap-4">
-  <Link
-    href="/login"
-    className="text-sm text-foreground font-semibold hover:text-secondary transition"
-  >
-    Login
-  </Link>
-  <Link
-    href="/signup"
-    className="px-6 py-2 bg-secondary text-white rounded-lg text-sm font-semibold hover:bg-secondary/90 transition"
-  >
-    Sign Up
-  </Link>
-</div>
+            <div className="flex items-center gap-4 md:w-[200px] flex-shrink-0 justify-end">
+              <Link
+                href="/login"
+                className="text-sm text-foreground font-semibold hover:text-secondary transition whitespace-nowrap"
+              >
+                Login
+              </Link>
+              <Link
+                href="/signup"
+                className="px-6 py-2 bg-secondary text-white rounded-lg text-sm font-semibold hover:bg-secondary/90 transition whitespace-nowrap"
+              >
+                Sign Up
+              </Link>
+            </div>
           </div>
         </div>
       </header>
