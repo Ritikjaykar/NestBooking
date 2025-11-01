@@ -2,27 +2,22 @@
 
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, Variants, easeOut} from "framer-motion"
 import { Heart, MapPin, Bed, Bath, Ruler as Ruler2, ChevronLeft, ChevronRight, Search, DollarSign, Home, X, Calendar } from "lucide-react"
 import Header from "@/components/layout/header"
 
 
 // Animation variants (added)
-const slideInUp = {
+const slideInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.25, 0.1, 0.25, 1], // equivalent to "easeOut"
+      ease: easeOut, // ✅ imported easing constant, not string
     },
   },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { delay: 0.3 } },
 }
 
 // Sample properties data
