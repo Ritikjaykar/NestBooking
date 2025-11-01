@@ -64,7 +64,7 @@ export default function Header() {
               Claim Your Property
             </Link>
             <Link
-              href="#"
+              href="/form"
               className="text-gray-900 font-semibold hover:text-purple-600 transition"
             >
               List Your Property
