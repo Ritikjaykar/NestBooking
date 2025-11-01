@@ -58,7 +58,7 @@ export default function Header() {
               Wall
             </Link>
             <Link
-              href="#"
+              href="/properties"
               className="text-gray-900 font-semibold hover:text-purple-600 transition"
             >
               Claim Your Property

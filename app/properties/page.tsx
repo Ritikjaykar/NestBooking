@@ -43,6 +43,12 @@ export default function PropertiesPage() {
               <a href="#" className="text-base font-medium text-foreground hover:text-accent whitespace-nowrap">
                 Manage Property
               </a>
+              <Link
+                href="#"
+                className="text-base font-semibold text-gray-900 hover:text-purple-600 transition whitespace-nowrap"
+              >
+                Claim Your Property
+              </Link>
               <a href="#" className="text-base font-medium text-foreground hover:text-accent whitespace-nowrap">
                 Resources
               </a>
