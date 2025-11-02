@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion, easeOut} from "framer-motion"
+import { motion} from "framer-motion"
 import { Heart, MapPin, Bed, Bath, Ruler as Ruler2, ChevronLeft, ChevronRight, Search, DollarSign, X, Calendar } from "lucide-react"
 import Header from "@/components/layout/header"
 
@@ -15,10 +15,10 @@ const slideInUp = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: easeOut, // This is correct - using the imported constant
+      ease: "easeOut",  // ← String, not the imported easeOut
     },
   },
-}
+} as const
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -27,10 +27,10 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: easeOut,
+      ease: "easeOut",  // ← String, not the imported easeOut
     },
   },
-}
+} as const
 
 
 // Sample properties data
