@@ -3,7 +3,6 @@
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import Link from "next/link"
-import Image from "next/image"
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react"
 
 export default function Footer() {

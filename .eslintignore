@@ -1,0 +1,10 @@
+# Ignore build and dependency folders
+node_modules/
+.next/
+dist/
+build/
+out/
+
+# Ignore config and manifest files
+*.config.js
+*.config.mjs

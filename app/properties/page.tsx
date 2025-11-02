@@ -1,11 +1,11 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { motion, Variants, easeOut} from "framer-motion"
-import { Heart, MapPin, Bed, Bath, Ruler as Ruler2, ChevronLeft, ChevronRight, Search, DollarSign, Home, X, Calendar } from "lucide-react"
+import { Heart, MapPin, Bed, Bath, Ruler as Ruler2, ChevronLeft, ChevronRight, Search, DollarSign, X, Calendar } from "lucide-react"
 import Header from "@/components/layout/header"
-
 
 // Animation variants (added)
 const slideInUp: Variants = {
@@ -15,10 +15,23 @@ const slideInUp: Variants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: easeOut, // ✅ imported easing constant, not string
+      ease: easeOut,
     },
   },
 }
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: easeOut,
+    },
+  },
+}
+
 
 // Sample properties data
 const propertiesData = [
@@ -94,13 +107,13 @@ export default function PropertiesPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [favorites, setFavorites] = useState([])
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
-  const [isSearchSticky, setIsSearchSticky] = useState(false)
-  const [isHeaderVisible, setIsHeaderVisible] = useState(false)
+  // const [isSearchSticky, setIsSearchSticky] = useState(false)
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false) 
   const [isSearchVisible, setIsSearchVisible] = useState(false)
   const [isGridVisible, setIsGridVisible] = useState(false)
 
   const searchBarRef = useRef(null)
-  const sectionRef = useRef(null)
+  // const sectionRef = useRef(null)
   const headerRef = useRef(null)
   const searchSectionRef = useRef(null)
   const gridRef = useRef(null)
@@ -110,66 +123,69 @@ export default function PropertiesPage() {
   const startIdx = (currentPage - 1) * itemsPerPage
   const displayedProperties = propertiesData.slice(startIdx, startIdx + itemsPerPage)
 
-  useEffect(() => {
-    const observers = []
+useEffect(() => {
+  const observers = []
 
-    // Header observer
-    const headerObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsHeaderVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    // Search section observer
-    const searchObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsSearchVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    // Grid observer
-    const gridObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsGridVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    if (headerRef.current) {
-      headerObserver.observe(headerRef.current)
-      observers.push({ ref: headerRef, observer: headerObserver })
-    }
-    if (searchSectionRef.current) {
-      searchObserver.observe(searchSectionRef.current)
-      observers.push({ ref: searchSectionRef, observer: searchObserver })
-    }
-    if (gridRef.current) {
-      gridObserver.observe(gridRef.current)
-      observers.push({ ref: gridRef, observer: gridObserver })
-    }
-
-    return () => {
-      observers.forEach(({ ref, observer }) => {
-        if (ref.current) {
-          observer.unobserve(ref.current)
+  // Header observer
+  const headerObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsHeaderVisible(true)
         }
       })
-    }
-  }, [])
+    },
+    { threshold: 0.1 }
+  )
+
+  // Search section observer
+  const searchObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsSearchVisible(true)
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+
+  // Grid observer
+  const gridObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsGridVisible(true)
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+
+  // Store current ref values
+  const currentHeaderRef = headerRef.current
+  const currentSearchRef = searchSectionRef.current
+  const currentGridRef = gridRef.current
+
+  if (currentHeaderRef) {
+    headerObserver.observe(currentHeaderRef)
+    observers.push({ ref: currentHeaderRef, observer: headerObserver })
+  }
+  if (currentSearchRef) {
+    searchObserver.observe(currentSearchRef)
+    observers.push({ ref: currentSearchRef, observer: searchObserver })
+  }
+  if (currentGridRef) {
+    gridObserver.observe(currentGridRef)
+    observers.push({ ref: currentGridRef, observer: gridObserver })
+  }
+
+  return () => {
+    observers.forEach(({ ref, observer }) => {
+      observer.unobserve(ref) // Use the stored ref value, not ref.current
+    })
+  }
+}, [])
 
   const toggleFavorite = (id) => {
     setFavorites((prev) => (prev.includes(id) ? prev.filter((fav) => fav !== id) : [...prev, id]))
@@ -315,12 +331,14 @@ export default function PropertiesPage() {
                     transitionDelay: `${index * 100}ms`
                   }}
                 >
-                  <div className="relative overflow-hidden group">
-                    <img
-                      src={property.image}
-                      alt={property.title}
-                      className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
+<div className="relative overflow-hidden group">
+  <Image
+    src={property.image}
+    alt={property.title}
+    width={400}
+    height={300}
+    className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+  />
                     {property.popular && (
                       <div className="absolute left-3 top-3 rounded bg-purple-600 px-2 py-1 text-xs font-semibold text-white">
                         POPULAR

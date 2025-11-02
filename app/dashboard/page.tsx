@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import { Home, TrendingUp, DollarSign, Package, Star, Building2, History, Bell } from "lucide-react"
+import { Home, TrendingUp, DollarSign, Package, Star, History, Bell } from "lucide-react"
 
 export default function DashboardPage() {
-  const [isHeaderVisible, setIsHeaderVisible] = useState(false)
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
   const [isTitleVisible, setIsTitleVisible] = useState(false)
   const [isStatsVisible, setIsStatsVisible] = useState(false)
   const [isContentVisible, setIsContentVisible] = useState(false)
@@ -17,67 +17,69 @@ export default function DashboardPage() {
 
   useEffect(() => {
     // Header appears immediately
-    setIsHeaderVisible(true)
+    // setIsHeaderVisible(true)
 
     const observers = []
 
-    // Title observer
-    const titleObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsTitleVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    // Stats observer
-    const statsObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsStatsVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    // Content observer
-    const contentObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsContentVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    if (titleRef.current) {
-      titleObserver.observe(titleRef.current)
-      observers.push({ ref: titleRef, observer: titleObserver })
-    }
-    if (statsRef.current) {
-      statsObserver.observe(statsRef.current)
-      observers.push({ ref: statsRef, observer: statsObserver })
-    }
-    if (contentRef.current) {
-      contentObserver.observe(contentRef.current)
-      observers.push({ ref: contentRef, observer: contentObserver })
-    }
-
-    return () => {
-      observers.forEach(({ ref, observer }) => {
-        if (ref.current) {
-          observer.unobserve(ref.current)
+  // Title observer
+  const titleObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsTitleVisible(true)
         }
       })
-    }
-  }, [])
+    },
+    { threshold: 0.1 }
+  ) 
+
+  // Stats observer
+  const statsObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsStatsVisible(true)
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+
+  // Content observer
+  const contentObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIsContentVisible(true)
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+
+  const currentTitleRef = titleRef.current
+  const currentStatsRef = statsRef.current
+  const currentContentRef = contentRef.current
+
+  if (currentTitleRef) {
+    titleObserver.observe(currentTitleRef)
+    observers.push({ ref: currentTitleRef, observer: titleObserver })
+  }
+  if (currentStatsRef) {
+    statsObserver.observe(currentStatsRef)
+    observers.push({ ref: currentStatsRef, observer: statsObserver })
+  }
+  if (currentContentRef) {
+    contentObserver.observe(currentContentRef)
+    observers.push({ ref: currentContentRef, observer: contentObserver })
+  }
+
+  return () => {
+    observers.forEach(({ ref, observer }) => {
+      observer.unobserve(ref)
+    })
+  }
+}, [])
 
   return (
     <div className="min-h-screen bg-gray-50">

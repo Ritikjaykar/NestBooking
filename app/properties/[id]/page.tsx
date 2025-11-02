@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useParams } from "next/navigation"
+import Image from "next/image"
 import Link from "next/link"
 import {
   Heart,
@@ -121,12 +122,14 @@ export default function PropertyDetailPage() {
 
         {/* Image Gallery */}
         <div className="mb-8 grid gap-4 lg:grid-cols-3">
-          <div className="relative lg:col-span-2">
-            <img
-              src="/1.png"
-              alt="Property"
-              className="h-96 w-full rounded-lg object-cover"
-            />
+<div className="relative lg:col-span-2">
+  <Image
+    src="/1.png"
+    alt="Property"
+    width={800}
+    height={600}
+    className="h-96 w-full rounded-lg object-cover"
+  />
             <button
               onClick={prevImage}
               className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-background/80 p-2 text-foreground hover:bg-background"
@@ -142,9 +145,11 @@ export default function PropertyDetailPage() {
           </div>
 <div className="flex flex-col gap-2">
   {["/1.png", "/2.png", "/3.png", "/4.png"].map((img, idx) => (
-    <img
+    <Image
       key={idx}
       src={img}
+      width={200}
+      height={150}
       alt={`Property ${idx + 1}`}
       className={`h-24 w-full cursor-pointer rounded-lg object-cover transition-opacity ${
         idx === currentImageIdx ? "opacity-100 ring-2 ring-accent" : "opacity-60 hover:opacity-80"
@@ -262,9 +267,14 @@ export default function PropertyDetailPage() {
             {/* Map Section */}
             <div className="mb-8">
               <h2 className="mb-4 text-2xl font-bold text-foreground">Map</h2>
-              <div className="relative h-80 w-full overflow-hidden rounded-lg border border-border bg-muted">
-                <img src="/map-location.png" alt="Map" className="h-full w-full object-cover" />
-              </div>
+<div className="relative h-80 w-full overflow-hidden rounded-lg border border-border bg-muted">
+  <Image 
+    src="/map-location.png" 
+    alt="Map" 
+    fill
+    className="object-cover" 
+  />
+</div>
               <p className="mt-2 text-xs text-muted-foreground">See more listings in this location →</p>
             </div>
 
@@ -276,7 +286,7 @@ export default function PropertyDetailPage() {
                   <Link key={listing.id} href={`/properties/${listing.id}`}>
                     <div className="overflow-hidden rounded-lg border border-border bg-card transition-shadow hover:shadow-lg cursor-pointer">
                       <div className="relative">
-                        <img
+                        <Image
                           src={listing.image || "/placeholder.svg"}
                           alt={listing.title}
                           className="h-40 w-full object-cover"

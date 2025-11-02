@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
-import { useRef } from "react"
+import { useState, useEffect, useRef } from "react"
+import { motion, useInView } from "framer-motion"
 import Image from "next/image"
 import { Heart, Search, MapPin, Calendar, DollarSign, Home, X } from "lucide-react"
+
 
 const properties = [
   {
@@ -232,8 +232,8 @@ const properties = [
 export default function LocationSection() {
   const [visibleCount, setVisibleCount] = useState(12)
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [isScrolled, setIsScrolled] = useState(false) // Add this line
   const [isSearchSticky, setIsSearchSticky] = useState(false)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
   const ref = useRef(null)
@@ -720,7 +720,7 @@ export default function LocationSection() {
 
         {/* Enhanced Properties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {properties.slice(0, visibleCount).map((property, index) => (
+          {properties.slice(0, visibleCount).map((property) => (
             <motion.div
               key={property.id}
               variants={staggerItem}

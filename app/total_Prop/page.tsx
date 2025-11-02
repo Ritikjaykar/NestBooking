@@ -3,7 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
-import { Heart, Bed, Bath, Maximize } from "lucide-react"
+import { Heart, Bed, Bath } from "lucide-react"
 
 export default function DashboardPage() {
   const [visibleCount, setVisibleCount] = useState(4) // show 2 rows initially (2 * 2 = 4)

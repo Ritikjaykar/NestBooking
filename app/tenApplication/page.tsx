@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { Upload, Calendar, CheckCircle } from "lucide-react"
+import { Upload, CheckCircle } from "lucide-react"
+// import { Calendar } from "lucide-react"
 
 export default function ClaimPropertyPage() {
   const [formData, setFormData] = useState({

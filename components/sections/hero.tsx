@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import Image from "next/image"
@@ -8,13 +8,8 @@ import { MapPin, Calendar, Search } from "lucide-react"
 
 export default function Hero() {
   const [activeTab, setActiveTab] = useState("rent")
-  const [isVisible, setIsVisible] = useState(false)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
 
   const containerVariants = {
     hidden: { opacity: 0 },

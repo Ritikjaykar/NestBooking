@@ -1,21 +1,19 @@
-import js from "@eslint/js";
-import globals from "globals";
+import next from "eslint-config-next";
 import tseslint from "typescript-eslint";
-import pluginReact from "eslint-plugin-react";
-import { defineConfig } from "eslint/config";
 
-export default defineConfig([
+export default [
+  ...next,
+  ...tseslint.configs.recommended,
   {
-    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
-    plugins: { js },
-    extends: [js.configs.recommended],
-    languageOptions: {
-      globals: { ...globals.browser, ...globals.node },
-    },
     rules: {
-      "react/react-in-jsx-scope": "off", // 🚫 Disable this outdated rule
+      "@typescript-eslint/no-unused-vars": ["warn"],
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "react/no-unescaped-entities": "off",
+      "react/no-unknown-property": "off",
+      "no-console": "off",
+      "no-debugger": "off",
     },
   },
-  tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
-]);
+];

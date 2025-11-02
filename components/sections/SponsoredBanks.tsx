@@ -1,6 +1,8 @@
 "use client"
 
+import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
+
 
 const banks = [
   {
@@ -57,28 +59,20 @@ const banks = [
 
 export default function SponsoredBanks() {
   const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef(null)
+  const sectionRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setIsVisible(true)
+      })
+    }, { threshold: 0.1 })
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
+    const currentRef = sectionRef.current
+    if (currentRef) observer.observe(currentRef)
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
+      if (currentRef) observer.unobserve(currentRef)
     }
   }, [])
 
@@ -123,10 +117,12 @@ export default function SponsoredBanks() {
                 className="flex-shrink-0 mx-8 transition-all duration-300 hover:scale-110"
               >
                 <div className="w-32 h-24 md:w-40 md:h-28 flex items-center justify-center bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 p-4 border border-purple-100">
-                  <img
+                  <Image
                     src={bank.logo}
                     alt={bank.name}
-                    className="max-w-full max-h-full object-contain transition-all duration-300"
+                    width={160}
+                    height={70}
+                    className="object-contain max-w-full max-h-full"
                   />
                 </div>
               </div>

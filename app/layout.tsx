@@ -4,7 +4,8 @@ import { Plus_Jakarta_Sans } from "next/font/google"
 import OfferPopup from "@/components/offer-popup"
 import "./globals.css"
 
-const _plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] })
+// rename `_plusJakarta` → `plusJakarta` for clarity
+const plusJakarta = Plus_Jakarta_Sans({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Nestbooking",
@@ -19,7 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      {/* apply the font */}
+      <body className={`${plusJakarta.className} font-sans antialiased`}>
         <OfferPopup />
         {children}
       </body>
