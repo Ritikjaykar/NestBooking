@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion, Variants, easeOut} from "framer-motion"
+import { motion, easeOut} from "framer-motion"
 import { Heart, MapPin, Bed, Bath, Ruler as Ruler2, ChevronLeft, ChevronRight, Search, DollarSign, X, Calendar } from "lucide-react"
 import Header from "@/components/layout/header"
 
