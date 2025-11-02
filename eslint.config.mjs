@@ -2,6 +2,17 @@ import next from "eslint-config-next";
 import tseslint from "typescript-eslint";
 
 export default [
+  {
+    ignores: [
+      "node_modules/",
+      ".next/",
+      "dist/",
+      "build/", 
+      "out/",
+      "*.config.js",
+      "*.config.mjs"
+    ]
+  },
   ...next,
   ...tseslint.configs.recommended,
   {
