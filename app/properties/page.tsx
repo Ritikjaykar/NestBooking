@@ -8,19 +8,19 @@ import { Heart, MapPin, Bed, Bath, Ruler as Ruler2, ChevronLeft, ChevronRight, S
 import Header from "@/components/layout/header"
 
 // Animation variants (added)
-const slideInUp: Variants = {
+const slideInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.8,
-      ease: easeOut,
+      ease: easeOut, // This is correct - using the imported constant
     },
   },
 }
 
-const itemVariants: Variants = {
+const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
